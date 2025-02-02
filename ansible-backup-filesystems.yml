@@ -1,0 +1,9 @@
+---
+- name: Syncing filesystems
+  hosts: all
+  tasks:
+    - name: Syncing filesystems
+      ansible.posix.synchronize:
+        src: "{{ item.value.origin }}"
+        dest: "{{ item.value.destination }}"
+      with_dict: "{{ FileSystems }}"
